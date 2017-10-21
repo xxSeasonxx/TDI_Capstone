@@ -1,0 +1,12 @@
+gunicorn==19.3.0
+requests==2.9.1
+bokeh==0.12.7 
+python
+sklearn
+numpy
+pandas==0.20.3
+flask
+jinja2
+pip
+simplejson
+scipy

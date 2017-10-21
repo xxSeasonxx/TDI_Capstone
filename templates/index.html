@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>The Data Incubator</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="static/css/agency.min.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">NYC Complaints and Resolutions Analysis</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#prediction">Prediction</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#motivation">Motivation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#portfolio">Analysis</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="https://github.com/xxSeasonxx/TDI_Capstone" target="_blank">Github</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="https://www.linkedin.com/in/season-yang-830554b1/" target="_blank">Linkedin</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="https://www.thedataincubator.com" target="_blank">TDI</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead">
+      <div class="container">
+        <div class="intro-text">
+          <div class="intro-lead-in"></div>
+          <div class="intro-heading">Will your complaints be resolved?</div>
+          <a class="btn btn-xl js-scroll-trigger" href="#prediction">Let's Find out</a>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Prediction -->
+    <section id="prediction">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <form id='index' method='post' >
+                        
+                        <h2 class="section-heading">Predict your complaint outcome</h2>
+                        
+                        <h4 class="service-heading">Please select your complain type:</h4>
+                        <!--                    <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" required data-validation-required-message="Please enter your phone number.">-->
+                        <h3 class="section-subheading text-muted">
+<!--                            <div class="styled-select slate">-->
+                            <select class="selectpicker" name="complaint_type">
+                                {% for feature in complaint_types %}
+                                <option value="{{ feature }}">{{ feature }}</option>
+                                {% endfor %}
+                            </select>
+<!--                            </div>-->
+                        </h3>
+                        <h4 class="service-heading">Further Detail of your complaint</h4>
+<!--                        <h3 class="section-subheading text-muted">-->
+                            Zipcode: <select name="zipcode">
+                                {% for zipcode in Man_zipcodes %}
+                                <option value = "{{ zipcode }}"> {{ zipcode }} </option>
+                                {% endfor %}
+                            </select>
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            Time: <select name="com_time">
+                                {% for time in complain_times %}
+                                <option value = "{{ time }}"> {{ time }} </option>
+                                {% endfor %}
+                            </select>
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            Department: <select name="agency">
+                                {% for agency in complain_agencys %}
+                                <option value = "{{ agency }}"> {{ agency }} </option>
+                                {% endfor %}
+                            </select>
+                            <BR />
+                            <BR />
+<!--                        </h3>-->
+                        <BR />
+                        <BR />
+                        <p>
+                        <input class="btn btn-xl js-scroll-trigger" type='submit' value='Submit' />
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Motivation -->
+    <section id="motivation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Data and Motivation</h2>
+                    <h3 class="section-subheading text-muted">New York City, as one of the most prosperous cities on the planet, has almost 400 years of history.  Numerous problems arise on a daily basis and perplex the living environment for local residents.  In response, New Yorkers can file complaints to the New York authorities and ask for resolutions, and this is known as the 311 services requests line. However, not all of your complaints will be responsibly resolved by the NY authorities (NYA) and thus your issue may grow and become severe.  My website aims to help user foresee their complains result and let them make a ratical decision.</h3>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <img class="rounded-circle img-fluid" src="static/img/about/population.jpg" alt="">
+                        <h4 class="service-heading">Enormous Demand</h4>
+                        <p class="text-muted"> High demand is the driving reason.  Now day New York has 8.5 million population, and in 2015 one year alone, there were 2.5 million complaints were filed.  Meaning about 1 in 4 of us depends on this service and awaits for New York authorities resolutions.  </p>
+                        </div>
+                <div class="col-md-4">
+                    <img class="rounded-circle img-fluid" src="static/img/about/NYPD.jpg" alt="">
+                        <h4 class="service-heading">Authorities</h4>
+                        <p class="text-muted"> Each complaint is followed by a New York authority's resolution, and I have data begin 2011 till now.  With this unique dataset, I am able to investigate and evaluate the performance of NYA.  Determine if NYA has made their effort to resolve a problem to its root. </p>
+                        </div>
+                <div class="col-md-4">
+                    <img class="rounded-circle img-fluid" src="static/img/about/Question.jpg" alt="">
+                        </span>
+                        <h4 class="service-heading">Ask the Right Question</h4>
+                        <p class="text-muted"> The ultimate purpose is to improve our city and to better our city we ought to differentiate the problems.  That is asking the right question.  Why there is a complaint happening? What is the fundamental problem behind a complaint?  Using machine learning, we can distinguish the critical aspects of a complaint. </p>
+                        </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="bg-light" id="portfolio">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading"> Methodology and Analysis </h2>
+            <h3 class="section-subheading text-muted">Here we perform graphical analysis on our data and result</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="static/img/portfolio/01-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4> Data Preview  </h4>
+              <p class="text-muted"> Most Complaints </p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="static/img/portfolio/02-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4> Resolution </h4>
+              <p class="text-muted">Keywords searching</p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="static/img/portfolio/03-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4> Time Series </h4>
+              <p class="text-muted"> Reflect performance </p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="static/img/portfolio/04-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4> Model Coefficient </h4>
+              <p class="text-muted"> Key features for resolve </p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="static/img/portfolio/05-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4>Resolution by Cities</h4>
+              <p class="text-muted"> Resolutions between cities </p>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="static/img/portfolio/06-thumbnail.jpg" alt="">
+            </a>
+            <div class="portfolio-caption">
+              <h4> Traffic by Location </h4>
+              <p class="text-muted">Traffic Complaints Focus</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+<!--                <h2 class="section-heading">Data and Motivation</h2>-->
+                <h3 class="section-subheading text-muted"> Contact!! </h3>
+            </div>
+            
+          <div class="col-md-4">
+            <span class="copyright">Copyright &copy; Season Yang - TDI 2017</span>
+          </div>
+          <div class="col-md-4">
+              <ul class="list-inline social-buttons">
+                  <li class="list-inline-item">
+                      <a href="#">
+                          <i class="fa fa-twitter"></i>
+                      </a>
+                  </li>
+                  <li class="list-inline-item">
+                      <a href="https://www.facebook.com" target="_blank">
+                          <i class="fa fa-facebook"></i>
+                      </a>
+                  </li>
+                  <li class="list-inline-item">
+                      <a href="https://www.linkedin.com/in/season-yang-830554b1/" target="_blank">
+                          <i class="fa fa-linkedin"></i>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline quicklinks">
+              <li class="list-inline-item">
+                <a href="#">Privacy Policy</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Terms of Use</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Portfolio Modals -->
+
+    <!-- Modal 1 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+                  <h2>Most Complain by City</h2>
+                  <p class="item-intro text-muted">Man vs Brok</p>
+                  <img class="img-fluid d-block mx-auto" src="static/img/portfolio/01-full.jpg" alt="">
+                  <p>This plot describes the most complaint and then group by cities.  We first observe that what is the serious issue in all different cities.  Then we see that even though Manhattan is the most populated area, we see more complaints is happening in Bronx and Brooklyn</p>
+
+                  <button class="btn btn-primary" data-dismiss="modal" type="button">
+                    <i class="fa fa-times"></i>
+                    Close Project</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+                  <h2>Resolution outcome</h2>
+                  <p class="item-intro text-muted"> Key Word Searching</p>
+                  <img class="img-fluid d-block mx-auto" src="static/img/portfolio/02-full.jpg" alt="">
+                  <p>By looking over for keyword, I categorize the resolution into different categories.  Only correct, fixed, resolve, etc. are defined as resolved.  The final number comes down to Unlikely to be resolved = 1167132, Will be Resolved = 329182, Inspected, Violation Issued = 160849</p>
+                  <button class="btn btn-primary" data-dismiss="modal" type="button">
+                    <i class="fa fa-times"></i>
+                    Close Project</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+                  <h2>Time series</h2>
+                  <p class="item-intro text-muted">Resolved rate each year</p>
+                  <img class="img-fluid d-block mx-auto" src="static/img/portfolio/03-full.jpg" alt="">
+                  <p>
+                  My model focuses on 2015 data, but I also did a time series analysis from 2011 to 2015.  For each year, I use keywords searching finding and compute the number and ratio between likely to be resolved and unlikely to be solved.  This plot demonstrates the performance of new york authorities response to our complaints.
+                  </p>
+                  <button class="btn btn-primary" data-dismiss="modal" type="button">
+                    <i class="fa fa-times"></i>
+                    Close Project</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 4 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+                  <h2> Model -- Resolved Coefficient</h2>
+                  <p class="item-intro text-muted"> What are the key features that contribute to resolved  </p>
+                  <img class="img-fluid d-block mx-auto" src="static/img/portfolio/04-full.jpg" alt="">
+                  <p> For building my model, I use Logistic model to predict the outcome of your complaints.  We are intersted What are the key features that contribute to your complaints to be resolved.  And the plot shows the resolved coefficients  </p>
+                  <button class="btn btn-primary" data-dismiss="modal" type="button">
+                    <i class="fa fa-times"></i>
+                    Close Project</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 5 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+                  <h2>Resolution by Cities</h2>
+                  <p class="item-intro text-muted">Large number if un-resolved</p>
+                  <img class="img-fluid d-block mx-auto" src="static/img/portfolio/05-full.jpg" alt="">
+                  <p>We care about whether our complaints will be resolved, let's look at what are the resolution result by Cities</p>
+                  <button class="btn btn-primary" data-dismiss="modal" type="button">
+                    <i class="fa fa-times"></i>
+                    Close Project</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 6 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <div class="modal-body">
+                  <!-- Project Details Go Here -->
+                  <h2> Traffic by Location </h2>
+                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
+                  <img class="img-fluid d-block mx-auto" src="static/img/portfolio/06-full.jpg" alt="">
+                  <p>Now suppose we want to look a specific problem, for example, Traffic Complain, we can use the data to observe the general map in Manhattan.</p>
+                  <button class="btn btn-primary" data-dismiss="modal" type="button">
+                    <i class="fa fa-times"></i>
+                    Close Project</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/popper/popper.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Contact form JavaScript -->
+    <script src="static/js/jqBootstrapValidation.js"></script>
+    <script src="static/js/contact_me.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="static/js/agency.min.js"></script>
+
+  </body>
+
+</html>
