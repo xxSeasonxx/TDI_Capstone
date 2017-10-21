@@ -65,7 +65,7 @@ def index():
 
 @app.route('/result')
 def result():
-    input = [time_]
+    input = [app.vars['time']]
     input += ang.values()
     input += com.values()
     input += zip.values()
