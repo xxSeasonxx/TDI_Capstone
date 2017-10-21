@@ -30,6 +30,7 @@ def transfer(dep):
     return complain_agencys[ind]
 
 # Initialize my input dic
+time_ = 0
 com = OrderedDict()
 zip  = OrderedDict()
 ang = OrderedDict()
@@ -65,7 +66,7 @@ def index():
 
 @app.route('/result')
 def result():
-    input = [app.vars['time']]
+    input = [time_]
     input += ang.values()
     input += com.values()
     input += zip.values()
@@ -79,7 +80,7 @@ def result():
     duplicate_rate = out[0][0]
     tbd_rate = out[0][-2]
     return render_template("model.html", complaint = app.vars['complaint_type'] ,
-                           zipcode = app.vars['zipcode'], time = app.vars['time'], agency = app.vars['time'], resolve_rate=resolve_rate,fail_rate = fail_rate, violation_rate=violation_rate, noviolation_rate=noviolation_rate,duplicate_rate=duplicate_rate,tbd_rate = tbd_rate )
+                           zipcode = app.vars['zipcode'], time = app.vars['time'], agency = app.vars['agency'], resolve_rate=resolve_rate,fail_rate = fail_rate, violation_rate=violation_rate, noviolation_rate=noviolation_rate,duplicate_rate=duplicate_rate,tbd_rate = tbd_rate )
 
 
 # With debug=True, Flask server will auto-reload
